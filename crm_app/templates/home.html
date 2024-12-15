@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+    
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM</title>
+</head>
+{% block content %}
+
+<body>
+    <div class ="col-md-6 offset-md-3">
+    {% if user.is_authenticated %}
+    <h1> Hello mrunal</h1>
+    {% else %}
+        <h1> Login</h1>
+    </br>
+        <form method="POST" action="{% url 'home' %}">
+            {% csrf_token %}
+            <form>
+  <div class="mb-3">
+    <input type="text" class="form-control" name="username", placeholder="Username" required>
+  </div></br>
+  <div class="mb-3">
+    <input type="password" class="form-control" name="password", placeholder="Password" required>
+  </div>
+</br>
+  <button type="submit" class="btn btn-secondary">Login</button>
+</form>
+        </form>
+
+    </div>
+</body>
+</html>
+{% endif %}
+{% endblock %}
